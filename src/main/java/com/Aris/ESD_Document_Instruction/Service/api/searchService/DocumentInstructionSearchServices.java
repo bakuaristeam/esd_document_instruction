@@ -36,11 +36,11 @@ public class DocumentInstructionSearchServices {
         return documentInstructionSearchInternalService.getDocInsByIdDocIns(idDocIns);
     }
 
-    @GetMapping("/getDocInsByIdDoc/{idDoc}/{idEmp}")
-    public ResponseSearchDocumentInstructionByidDocument getDocInsByIdDoc(@PathVariable("idDoc") long idDoc,
-                                                                   @PathVariable("idEmp")long idEmp){
-        logger.info("esd_DocumentInstruction_idDocument->search->request : {}",idDoc);
-        return documentInstructionSearchInternalService.getDocInsByidDocument(idDoc,idEmp);
+    //mySendDocInfo,mydocInfo
+    @GetMapping("/getDocInsByIdDocMov/{idDocMov}")
+    public ResponseSearchDocumentInstructionByidDocument getDocInsByIdDocMov(@PathVariable("idDocMov") long idDocMov){
+        logger.info("esd_DocumentInstruction_idDocument->search->request : {}",idDocMov);
+        return documentInstructionSearchInternalService.getDocInsByidDocumentMov(idDocMov);
     }
 
     @GetMapping("/getDocInsByIdIns/{idIns}")

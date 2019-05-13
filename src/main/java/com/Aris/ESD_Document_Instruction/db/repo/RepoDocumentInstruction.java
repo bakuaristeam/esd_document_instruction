@@ -15,7 +15,10 @@ public interface RepoDocumentInstruction extends CrudRepository<DocumentInstruct
 
     List<DocumentInstruction> findByIdInstructionAndIsActive(long idIns,int isActive);
 
-    DocumentInstruction findByIdDocumentAndInstructionForEmpIdAndIsActive(long idDoc,long insForEmpId,int isActive);
+//    DocumentInstruction findByIdDocumentAndInstructionForEmpIdAndIsActive(long idDoc,long insForEmpId,int isActive);
+
+    DocumentInstruction findByIdDocumentMovAndIsActive(long idDocMov,int isActive);
+
 
 //
 }

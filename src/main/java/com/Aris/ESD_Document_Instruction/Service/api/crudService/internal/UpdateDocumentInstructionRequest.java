@@ -3,10 +3,9 @@ package com.Aris.ESD_Document_Instruction.Service.api.crudService.internal;
 import java.util.Date;
 
 public class UpdateDocumentInstructionRequest {
-
     private long idDocumentInstruction;
     private long idInstruction;
-    private long idDocument;
+    private long idDocumentMov;
     private long enteredEmployeeID;
     private long enteredDate;
     private int taskDate;
@@ -14,10 +13,10 @@ public class UpdateDocumentInstructionRequest {
     private int isActive;
     private int isDelete;
 
-    public UpdateDocumentInstructionRequest(long idDocumentInstruction, long idInstruction, long idDocument, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
+    public UpdateDocumentInstructionRequest(long idDocumentInstruction, long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
         this.idDocumentInstruction = idDocumentInstruction;
         this.idInstruction = idInstruction;
-        this.idDocument = idDocument;
+        this.idDocumentMov = idDocumentMov;
         this.enteredEmployeeID = enteredEmployeeID;
         this.enteredDate = enteredDate;
         this.taskDate = taskDate;
@@ -34,7 +33,7 @@ public class UpdateDocumentInstructionRequest {
         return "UpdateDocumentInstructionRequest{" +
                 "idDocumentInstruction=" + idDocumentInstruction +
                 ", idInstruction=" + idInstruction +
-                ", idDocument=" + idDocument +
+                ", idDocumentMov=" + idDocumentMov +
                 ", enteredEmployeeID=" + enteredEmployeeID +
                 ", enteredDate=" + enteredDate +
                 ", taskDate=" + taskDate +
@@ -60,12 +59,12 @@ public class UpdateDocumentInstructionRequest {
         this.idInstruction = idInstruction;
     }
 
-    public long getIdDocument() {
-        return idDocument;
+    public long getIdDocumentMov() {
+        return idDocumentMov;
     }
 
-    public void setIdDocument(long idDocument) {
-        this.idDocument = idDocument;
+    public void setIdDocumentMov(long idDocumentMov) {
+        this.idDocumentMov = idDocumentMov;
     }
 
     public long getEnteredEmployeeID() {

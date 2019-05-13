@@ -20,8 +20,8 @@ public class DocumentInstructionSearchInternalService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public ResponseSearchDocumentInstructionByidDocument getDocInsByidDocument(long idDoc, long idEmp) {
-        DocumentInstruction documentInstruction = repoDocumentInstruction.findByIdDocumentAndInstructionForEmpIdAndIsActive(idDoc, idEmp, 1);
+    public ResponseSearchDocumentInstructionByidDocument getDocInsByidDocumentMov(long idDocMov) {
+        DocumentInstruction documentInstruction = repoDocumentInstruction.findByIdDocumentMovAndIsActive(idDocMov,1);
         ResponseSearchDocumentInstructionByidDocument response = new ResponseSearchDocumentInstructionByidDocument();
         try {
             if (documentInstruction != null) {

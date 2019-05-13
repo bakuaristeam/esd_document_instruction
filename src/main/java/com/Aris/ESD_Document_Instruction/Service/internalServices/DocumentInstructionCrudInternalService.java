@@ -28,7 +28,7 @@ public class DocumentInstructionCrudInternalService {
             logger.info("saveDocumentInstruction response : {}", saveDocumentInstructionRequest.toString());
 
             documentInstruction.setIdInstruction(saveDocumentInstructionRequest.getIdInstruction());
-            documentInstruction.setIdDocument(saveDocumentInstructionRequest.getIdDocument());
+            documentInstruction.setIdDocumentMov(saveDocumentInstructionRequest.getIdDocumentMov());
             documentInstruction.setEnteredEmployeeID(saveDocumentInstructionRequest.getEnteredEmployeeID());
             documentInstruction.setEnteredDate(saveDocumentInstructionRequest.getEnteredDate());
             documentInstruction.setTaskDate(saveDocumentInstructionRequest.getTaskDate());
@@ -55,16 +55,18 @@ public class DocumentInstructionCrudInternalService {
             documentInstructionResponse.setServerCode(200);
             documentInstructionResponse.setServerMessage("OK");
             documentInstructionResponse.setStatusMessage("Update");
+
             logger.info("updateDocumentInstruction response : {}", documentInstructionResponse.toString());
 
+
+            documentInstruction.setIdDocumentMov(updateDocumentInstructionRequest.getIdDocumentInstruction());
             documentInstruction.setIdInstruction(updateDocumentInstructionRequest.getIdInstruction());
-            documentInstruction.setEnteredEmployeeID(updateDocumentInstructionRequest.getEnteredEmployeeID());
             documentInstruction.setEnteredDate(updateDocumentInstructionRequest.getEnteredDate());
-            documentInstruction.setIdDocument(updateDocumentInstructionRequest.getIdDocument());
+            documentInstruction.setEnteredEmployeeID(updateDocumentInstructionRequest.getEnteredEmployeeID());
             documentInstruction.setTaskDate(updateDocumentInstructionRequest.getTaskDate());
             documentInstruction.setInstructionForEmpId(updateDocumentInstructionRequest.getInstructionForEmpId());
-            documentInstruction.setIsActive(1);
             documentInstruction.setIsDelete(0);
+            documentInstruction.setIsActive(1);
 
             documentInstruction=repoDocumentInstruction.save(documentInstruction);
             documentInstructionResponse.setDocumentInstruction(documentInstruction);

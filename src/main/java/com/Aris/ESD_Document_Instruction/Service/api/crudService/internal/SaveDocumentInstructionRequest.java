@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class SaveDocumentInstructionRequest {
 
+    private long idDocumentInstruction;
     private long idInstruction;
-    private long idDocument;
+    private long idDocumentMov;
     private long enteredEmployeeID;
     private long enteredDate;
     private int taskDate;
@@ -13,9 +14,10 @@ public class SaveDocumentInstructionRequest {
     private int isActive;
     private int isDelete;
 
-    public SaveDocumentInstructionRequest(long idInstruction, long idDocument, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
+    public SaveDocumentInstructionRequest(long idDocumentInstruction, long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
+        this.idDocumentInstruction = idDocumentInstruction;
         this.idInstruction = idInstruction;
-        this.idDocument = idDocument;
+        this.idDocumentMov = idDocumentMov;
         this.enteredEmployeeID = enteredEmployeeID;
         this.enteredDate = enteredDate;
         this.taskDate = taskDate;
@@ -30,8 +32,9 @@ public class SaveDocumentInstructionRequest {
     @Override
     public String toString() {
         return "SaveDocumentInstructionRequest{" +
-                "idInstruction=" + idInstruction +
-                ", idDocument=" + idDocument +
+                "idDocumentInstruction=" + idDocumentInstruction +
+                ", idInstruction=" + idInstruction +
+                ", idDocumentMov=" + idDocumentMov +
                 ", enteredEmployeeID=" + enteredEmployeeID +
                 ", enteredDate=" + enteredDate +
                 ", taskDate=" + taskDate +
@@ -39,6 +42,14 @@ public class SaveDocumentInstructionRequest {
                 ", isActive=" + isActive +
                 ", isDelete=" + isDelete +
                 '}';
+    }
+
+    public long getIdDocumentInstruction() {
+        return idDocumentInstruction;
+    }
+
+    public void setIdDocumentInstruction(long idDocumentInstruction) {
+        this.idDocumentInstruction = idDocumentInstruction;
     }
 
     public long getIdInstruction() {
@@ -49,12 +60,12 @@ public class SaveDocumentInstructionRequest {
         this.idInstruction = idInstruction;
     }
 
-    public long getIdDocument() {
-        return idDocument;
+    public long getIdDocumentMov() {
+        return idDocumentMov;
     }
 
-    public void setIdDocument(long idDocument) {
-        this.idDocument = idDocument;
+    public void setIdDocumentMov(long idDocumentMov) {
+        this.idDocumentMov = idDocumentMov;
     }
 
     public long getEnteredEmployeeID() {

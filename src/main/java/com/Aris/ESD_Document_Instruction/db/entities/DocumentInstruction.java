@@ -12,7 +12,7 @@ public class DocumentInstruction {
     @Column(name = "idDocumentInstruction", nullable = false, unique = true)
     private long idDocumentInstruction;
     private long idInstruction;
-    private long idDocument;
+    private long idDocumentMov;
     private long enteredEmployeeID;
     private long enteredDate;
     private int taskDate;
@@ -20,9 +20,10 @@ public class DocumentInstruction {
     private int isActive;
     private int isDelete;
 
-    public DocumentInstruction(long idInstruction, long idDocument, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
+
+    public DocumentInstruction(long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
         this.idInstruction = idInstruction;
-        this.idDocument = idDocument;
+        this.idDocumentMov = idDocumentMov;
         this.enteredEmployeeID = enteredEmployeeID;
         this.enteredDate = enteredDate;
         this.taskDate = taskDate;
@@ -39,7 +40,7 @@ public class DocumentInstruction {
         return "DocumentInstruction{" +
                 "idDocumentInstruction=" + idDocumentInstruction +
                 ", idInstruction=" + idInstruction +
-                ", idDocument=" + idDocument +
+                ", idDocumentMov=" + idDocumentMov +
                 ", enteredEmployeeID=" + enteredEmployeeID +
                 ", enteredDate=" + enteredDate +
                 ", taskDate=" + taskDate +
@@ -65,12 +66,12 @@ public class DocumentInstruction {
         this.idInstruction = idInstruction;
     }
 
-    public long getIdDocument() {
-        return idDocument;
+    public long getIdDocumentMov() {
+        return idDocumentMov;
     }
 
-    public void setIdDocument(long idDocument) {
-        this.idDocument = idDocument;
+    public void setIdDocumentMov(long idDocumentMov) {
+        this.idDocumentMov = idDocumentMov;
     }
 
     public long getEnteredEmployeeID() {
