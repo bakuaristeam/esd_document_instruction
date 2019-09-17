@@ -13,8 +13,9 @@ public class SaveDocumentInstructionRequest {
     private long instructionForEmpId;
     private int isActive;
     private int isDelete;
+    private String instruction;
 
-    public SaveDocumentInstructionRequest(long idDocumentInstruction, long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
+    public SaveDocumentInstructionRequest(long idDocumentInstruction, long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete, String instruction) {
         this.idDocumentInstruction = idDocumentInstruction;
         this.idInstruction = idInstruction;
         this.idDocumentMov = idDocumentMov;
@@ -24,6 +25,7 @@ public class SaveDocumentInstructionRequest {
         this.instructionForEmpId = instructionForEmpId;
         this.isActive = isActive;
         this.isDelete = isDelete;
+        this.instruction = instruction;
     }
 
     public SaveDocumentInstructionRequest() {
@@ -41,6 +43,7 @@ public class SaveDocumentInstructionRequest {
                 ", instructionForEmpId=" + instructionForEmpId +
                 ", isActive=" + isActive +
                 ", isDelete=" + isDelete +
+                ", instruction='" + instruction + '\'' +
                 '}';
     }
 
@@ -114,5 +117,13 @@ public class SaveDocumentInstructionRequest {
 
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
     }
 }

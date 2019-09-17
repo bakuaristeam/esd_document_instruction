@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.Aris</groupId>
 	<artifactId>ESD_Document_Instruction</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>ESD_Document_Instruction</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -73,6 +73,15 @@
 		<dependency>
 			<groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-spring</artifactId>
 		</dependency>
 
 	</dependencies>

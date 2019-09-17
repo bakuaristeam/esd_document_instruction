@@ -5,6 +5,7 @@ import com.Aris.ESD_Document_Instruction.Service.api.crudService.internal.SaveDo
 import com.Aris.ESD_Document_Instruction.Service.api.crudService.internal.UpdateDocumentInstructionRequest;
 import com.Aris.ESD_Document_Instruction.db.entities.DocumentInstruction;
 import com.Aris.ESD_Document_Instruction.db.repo.RepoDocumentInstruction;
+import com.Aris.ESD_Document_Instruction.utill.HazelCastUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class DocumentInstructionCrudInternalService {
 
     @Autowired
     RepoDocumentInstruction repoDocumentInstruction;
+
+    @Autowired
+    HazelCastUtility hazelCastUtility;
+
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -35,7 +40,11 @@ public class DocumentInstructionCrudInternalService {
             documentInstruction.setInstructionForEmpId(saveDocumentInstructionRequest.getInstructionForEmpId());
             documentInstruction.setIsActive(1);
             documentInstruction.setIsDelete(0);
-            documentInstruction=repoDocumentInstruction.save(documentInstruction);
+
+            documentInstruction.setInstruction(saveDocumentInstructionRequest.getInstruction());
+//            documentInstruction=repoDocumentInstruction.save(documentInstruction);
+
+            documentInstruction=hazelCastUtility.save(documentInstruction);
             documentResponse.setDocumentInstruction(documentInstruction);
         } catch (Exception e) {
             documentResponse.setServerCode(100);
@@ -65,10 +74,12 @@ public class DocumentInstructionCrudInternalService {
             documentInstruction.setEnteredEmployeeID(updateDocumentInstructionRequest.getEnteredEmployeeID());
             documentInstruction.setTaskDate(updateDocumentInstructionRequest.getTaskDate());
             documentInstruction.setInstructionForEmpId(updateDocumentInstructionRequest.getInstructionForEmpId());
-            documentInstruction.setIsDelete(0);
-            documentInstruction.setIsActive(1);
+            documentInstruction.setIsDelete(updateDocumentInstructionRequest.getIsDelete());
+            documentInstruction.setIsActive(updateDocumentInstructionRequest.getIsActive());
+            documentInstruction.setInstruction(updateDocumentInstructionRequest.getInstruction());
 
-            documentInstruction=repoDocumentInstruction.save(documentInstruction);
+//            documentInstruction=repoDocumentInstruction.save(documentInstruction);
+            documentInstruction=hazelCastUtility.save(documentInstruction);
             documentInstructionResponse.setDocumentInstruction(documentInstruction);
             }else{
                 documentInstructionResponse.setServerCode(220);
@@ -87,27 +98,28 @@ public class DocumentInstructionCrudInternalService {
 
 
     public DocumentInstructionResponse deleteDocumentInstruction(long idDocumentInsrtuction) {
+        logger.info("step1---");
         DocumentInstructionResponse documentInstructionResponse= new DocumentInstructionResponse();
+        logger.info("step2---");
         try {
-            DocumentInstruction documentInstruction= repoDocumentInstruction.findByIdDocumentInstructionAndIsDelete(idDocumentInsrtuction,1);
+            DocumentInstruction documentInstruction= repoDocumentInstruction.findByIdDocumentInstructionAndIsActive(idDocumentInsrtuction,0);
+            logger.info("step3---");
             if(documentInstruction!=null) {
-                documentInstructionResponse.setServerCode(200);
+                logger.info("step4---");
                 documentInstructionResponse.setServerMessage("OK");
-                documentInstructionResponse.setStatusMessage("Deleted");
                 logger.info("deleteDocumentInstruction response : {}", documentInstructionResponse.toString());
 
-                documentInstruction.setIsDelete(0);
-                documentInstruction=repoDocumentInstruction.save(documentInstruction);
+                documentInstruction.setIsDelete(1);
+                documentInstruction = repoDocumentInstruction.save(documentInstruction);
                 documentInstructionResponse.setDocumentInstruction(documentInstruction);
-            }else {
-                documentInstructionResponse.setServerCode(220);
-                documentInstructionResponse.setServerMessage("OK");
-                documentInstructionResponse.setStatusMessage("file not found");
-                logger.info("deleteDocumentInstruction response : {}", documentInstructionResponse.toString());
+
+//            hazelCastUtility.deleteDocInst(idDocumentInsrtuction);
+                documentInstructionResponse.setStatusMessage("Deleted");
+                documentInstructionResponse.setServerCode(200);
             }
         } catch (Exception e) {
             documentInstructionResponse.setServerCode(100);
-            documentInstructionResponse.setServerMessage("erooor");
+            documentInstructionResponse.setServerMessage("error");
             documentInstructionResponse.setStatusMessage("No Delete");
             logger.error("Error delete file text : {}", e);
         }

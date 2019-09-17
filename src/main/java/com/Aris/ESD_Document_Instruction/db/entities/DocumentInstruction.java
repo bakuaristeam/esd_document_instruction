@@ -1,11 +1,13 @@
 package com.Aris.ESD_Document_Instruction.db.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "documentInstruction")
-public class DocumentInstruction {
+public class DocumentInstruction implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +21,6 @@ public class DocumentInstruction {
     private long instructionForEmpId;
     private int isActive;
     private int isDelete;
-
 
     public DocumentInstruction(long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
         this.idInstruction = idInstruction;
@@ -48,6 +49,10 @@ public class DocumentInstruction {
                 ", isActive=" + isActive +
                 ", isDelete=" + isDelete +
                 '}';
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public long getIdDocumentInstruction() {
@@ -120,5 +125,10 @@ public class DocumentInstruction {
 
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

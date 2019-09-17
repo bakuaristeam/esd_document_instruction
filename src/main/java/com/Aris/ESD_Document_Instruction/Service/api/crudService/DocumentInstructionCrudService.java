@@ -40,6 +40,8 @@ DocumentInstructionCrudService {
 
     @GetMapping("/delete/{idDocIns}")
     public DocumentInstructionResponse deleteDocIns(@PathVariable("idDocIns")long idDocumentInstruction) {
+        logger.info("esd_doc-ins->update->request : {}",idDocumentInstruction);
+
         return documentInstructionCrudInternalService.deleteDocumentInstruction(idDocumentInstruction);
     }
 

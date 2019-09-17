@@ -1,5 +1,6 @@
 package com.Aris.ESD_Document_Instruction.Service.api.searchService;
 
+import com.Aris.ESD_Document_Instruction.Service.api.searchService.internal.ResponseListDocIns;
 import com.Aris.ESD_Document_Instruction.Service.api.searchService.internal.ResponseSearchDocumentInstructionByidDocument;
 import com.Aris.ESD_Document_Instruction.Service.api.searchService.internal.ResponseSearchDocInsByIdDocIns;
 import com.Aris.ESD_Document_Instruction.Service.api.searchService.internal.ResponseSearchDocumentInstructionByidInstruction;
@@ -48,6 +49,13 @@ public class DocumentInstructionSearchServices {
         logger.info("esd_DocumentInstruction_idDocument->search->request : {}",idIns);
         return documentInstructionSearchInternalService.getDocInsByIdIns(idIns);
     }
+
+    @GetMapping("/getDocMove/{idDocMove}")
+    public ResponseListDocIns getDocInsByDocMove(@PathVariable("idDocMove") long idDocMove){
+        logger.info("esd_DocumentInstruction_idDocMove->search->request : {}",idDocMove);
+        return documentInstructionSearchInternalService.getDocInsByIdDocMove(idDocMove);
+    }
+
 
 
     @GetMapping("/documentInstruction/all")

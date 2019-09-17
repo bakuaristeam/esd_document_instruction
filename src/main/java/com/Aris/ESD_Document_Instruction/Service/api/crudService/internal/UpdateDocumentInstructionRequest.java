@@ -12,8 +12,9 @@ public class UpdateDocumentInstructionRequest {
     private long instructionForEmpId;
     private int isActive;
     private int isDelete;
+    private String instruction;
 
-    public UpdateDocumentInstructionRequest(long idDocumentInstruction, long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete) {
+    public UpdateDocumentInstructionRequest(long idDocumentInstruction, long idInstruction, long idDocumentMov, long enteredEmployeeID, long enteredDate, int taskDate, long instructionForEmpId, int isActive, int isDelete, String instruction) {
         this.idDocumentInstruction = idDocumentInstruction;
         this.idInstruction = idInstruction;
         this.idDocumentMov = idDocumentMov;
@@ -23,6 +24,7 @@ public class UpdateDocumentInstructionRequest {
         this.instructionForEmpId = instructionForEmpId;
         this.isActive = isActive;
         this.isDelete = isDelete;
+        this.instruction = instruction;
     }
 
     public UpdateDocumentInstructionRequest() {
@@ -40,6 +42,7 @@ public class UpdateDocumentInstructionRequest {
                 ", instructionForEmpId=" + instructionForEmpId +
                 ", isActive=" + isActive +
                 ", isDelete=" + isDelete +
+                ", instruction='" + instruction + '\'' +
                 '}';
     }
 
@@ -113,5 +116,13 @@ public class UpdateDocumentInstructionRequest {
 
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
     }
 }
